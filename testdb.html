@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Conexão</title>
+</head>
+<body>
+    <h1>Registro de Temperatura</h1>
+    
+    <label for="temperatura">Temperatura:</label>
+    <input type="number" id="temperatura" placeholder="Digite a temperatura">
+    <button onclick="enviarDados()">Enviar</button>
+
+    <script>
+        function enviarDados() {
+            const temperatura = document.getElementById('temperatura').value;
+            if (!temperatura) {
+                alert("Digite a temperatura!");
+                return;
+            }
+
+            fetch('http://localhost:3006/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ temperatura })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message + " - ID: " + data.id);
+                document.getElementById('temperatura').value = ''; // Limpa o campo após envio
+            })
+            .catch(error => console.error('Erro:', error));
+        }
+    </script>
+</body>
+</html>
