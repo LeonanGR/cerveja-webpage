@@ -2,6 +2,7 @@ import time
 import mysql.connector
 import matplotlib.pyplot as plt
 import pandas as pd
+from datetime import datetime
 
 def conectar_bd():
     return mysql.connector.connect(
@@ -16,6 +17,16 @@ def gerar_grafico():
         conexao = conectar_bd()
         cursor = conexao.cursor()
         cursor.execute("SELECT horario, temperatura FROM temp ORDER BY horario DESC LIMIT 100")
+        
+        #Exemplos de busca personalizada
+        '''
+        #cursor.execute("SELECT horario, temperatura FROM temp WHERE horario BETWEEN '2025-02-15 20:00:00' AND '2025-02-15 20:10:00'")
+        
+        data_inicio = "2025-02-15 12:00:00"
+        data_fim = "2025-02-15 18:00:00"
+        cursor.execute("SELECT horario, temperatura FROM temp WHERE horario BETWEEN %s AND %s", (data_inicio, data_fim))
+        '''
+        
         dados = cursor.fetchall()
         
         if dados:
@@ -33,7 +44,7 @@ def gerar_grafico():
             
             plt.savefig("static/grafico.png")
             plt.close()
-            print("Gráfico atualizado.")
+            print(f"Gráfico atualizado às {datetime.now().strftime('%H:%M')}.")
         
         cursor.close()
         conexao.close()
