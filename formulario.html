@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Completo</title>
+    <!-- CSS do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Formulário Completo em HTML</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <!-- Campo de Nome -->
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" id="nome" name="nome" required>
+                            </div>
+
+                            <!-- Campo de Idade -->
+                            <div class="form-group">
+                                <label for="idade">Idade:</label>
+                                <input type="number" class="form-control" id="idade" name="idade" min="1" max="100">
+                            </div>
+
+                            <!-- Campo de Nota -->
+                            <div class="form-group">
+                                <label for="nota_embalagem">Nota da embalagem:</label>
+                                <input type="number" class="form-control" id="nota_embalagem" name="nota_embalagem"
+                                    min="1" max="10">
+                            </div>
+
+                            <!-- Botões de Seleção (Radio) -->
+                            <div class="form-group">
+                                <label>Gênero:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="masc" name="genero"
+                                        value="masculino">
+                                    <label class="form-check-label" for="masc">Masculino</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="fem" name="genero"
+                                        value="feminino">
+                                    <label class="form-check-label" for="fem">Feminino</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="outro" name="genero" value="outro">
+                                    <label class="form-check-label" for="outro">Algum dos 48 tipos de gay</label>
+                                </div>
+                            </div>
+
+                            <!-- Área de Texto -->
+                            <div class="form-group">
+                                <label for="mensagem">Formação:</label>
+                                <textarea class="form-control" id="mensagem" name="mensagem" rows="1"></textarea>
+                            </div>
+
+                            <!-- Seleção de Estado -->
+                            <div class="form-group">
+                                <label for="estado">Estado:</label>
+                                <select class="form-control" id="estado" name="estado" required>
+                                    <option value="">Selecione um estado</option>
+                                </select>
+                            </div>
+
+                            <!-- Seleção de Município -->
+                            <div class="form-group">
+                                <label for="municipio">Município:</label>
+                                <select class="form-control" id="municipio" name="municipio" required>
+                                    <option value="">Selecione um município</option>
+                                </select>
+                            </div>
+
+                            <!-- Botões de Envio e Reset -->
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="reset" class="btn btn-secondary">Limpar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript do Bootstrap e dependências -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Seu script personalizado -->
+    <script src="formulario.js"></script>
+</body>
+
+</html>
