@@ -18,7 +18,7 @@
                         <h2>Formulário Completo em HTML</h2>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="formulario" method="post">
                             <!-- Campo de Nome -->
                             <div class="form-group">
                                 <label for="nome">Nome:</label>
@@ -28,14 +28,14 @@
                             <!-- Campo de Idade -->
                             <div class="form-group">
                                 <label for="idade">Idade:</label>
-                                <input type="number" class="form-control" id="idade" name="idade" min="1" max="100">
+                                <input type="number" class="form-control" id="idade" name="idade" required>
                             </div>
 
                             <!-- Campo de Nota -->
                             <div class="form-group">
                                 <label for="nota_embalagem">Nota da embalagem:</label>
                                 <input type="number" class="form-control" id="nota_embalagem" name="nota_embalagem"
-                                    min="1" max="10">
+                                    min="0" max="10" required>
                             </div>
 
                             <!-- Botões de Seleção (Radio) -->
@@ -43,31 +43,32 @@
                                 <label>Gênero:</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="masc" name="genero"
-                                        value="masculino">
+                                        placeholder="masculino">
                                     <label class="form-check-label" for="masc">Masculino</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="fem" name="genero"
-                                        value="feminino">
+                                        placeholder="feminino">
                                     <label class="form-check-label" for="fem">Feminino</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="outro" name="genero" value="outro">
-                                    <label class="form-check-label" for="outro">Algum dos 48 tipos de gay</label>
+                                    <input class="form-check-input" type="radio" id="outro" name="genero"
+                                        placeholder="outro">
+                                    <label class="form-check-label" for="outro">Outro</label>
                                 </div>
                             </div>
 
                             <!-- Área de Texto -->
                             <div class="form-group">
-                                <label for="mensagem">Formação:</label>
-                                <textarea class="form-control" id="mensagem" name="mensagem" rows="1"></textarea>
+                                <label for="formacao">Formação:</label>
+                                <textarea class="form-control" id="formacao" name="formacao" rows="1"></textarea>
                             </div>
 
                             <!-- Seleção de Estado -->
                             <div class="form-group">
                                 <label for="estado">Estado:</label>
                                 <select class="form-control" id="estado" name="estado" required>
-                                    <option value="">Selecione um estado</option>
+                                    <option placeholder="">Selecione um estado</option>
                                 </select>
                             </div>
 
@@ -75,7 +76,7 @@
                             <div class="form-group">
                                 <label for="municipio">Município:</label>
                                 <select class="form-control" id="municipio" name="municipio" required>
-                                    <option value="">Selecione um município</option>
+                                    <option placeholder="">Selecione um município</option>
                                 </select>
                             </div>
 
@@ -93,8 +94,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Seu script personalizado -->
-    <script src="formulario.js"></script>
+
+    <script src="scripts/formulario.js"></script>
+    <script src="scripts/estados_municipios_api.js"></script>
+
 </body>
 
 </html>

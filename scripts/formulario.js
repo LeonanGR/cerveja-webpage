@@ -1,55 +1,29 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const estadoSelect = document.getElementById('estado');
-    const municipioSelect = document.getElementById('municipio');
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('formulario').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
 
-    // Função para carregar os estados
-    function carregarEstados() {
-        fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
-            .then(response => response.json())
-            .then(estados => {
-                // Ordena os estados em ordem alfabética
-                estados.sort((a, b) => a.nome.localeCompare(b.nome));
+        // Captura os dados do formulário
+        const formData = {
+            nome: document.getElementById('nome').value,
+            idade: document.getElementById('idade').value,
+            nota_embalagem: document.getElementById('nota_embalagem').value,
+            genero: document.querySelector('input[name="genero"]:checked')?.id || '',
+            formacao: document.getElementById('formacao').value,
+            estado: document.getElementById('estado').options[document.getElementById('estado').selectedIndex].text,
+            municipio: document.getElementById('municipio').options[document.getElementById('municipio').selectedIndex].text
+        };
 
-                // Adiciona os estados ao select
-                estados.forEach(estado => {
-                    const option = document.createElement('option');
-                    option.value = estado.id;
-                    option.textContent = estado.nome;
-                    estadoSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Erro ao carregar os estados:', error));
-    }
-
-    // Função para carregar os municípios com base no estado selecionado
-    function carregarMunicipios(estadoId) {
-        fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
-            .then(response => response.json())
-            .then(municipios => {
-                // Limpa o select de municípios
-                municipioSelect.innerHTML = '<option value="">Selecione um município</option>';
-
-                // Adiciona os municípios ao select
-                municipios.forEach(municipio => {
-                    const option = document.createElement('option');
-                    option.value = municipio.id;
-                    option.textContent = municipio.nome;
-                    municipioSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Erro ao carregar os municípios:', error));
-    }
-
-    // Evento para quando o estado é selecionado
-    estadoSelect.addEventListener('change', function() {
-        const estadoId = this.value;
-        if (estadoId) {
-            carregarMunicipios(estadoId);
-        } else {
-            municipioSelect.innerHTML = '<option value="">Selecione um município</option>';
-        }
+        // **Envia os dados para o servidor e adiciona ao CSV**
+        fetch('http://localhost:3006/salvar', { // Porta corrigida para 3006
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`${data.mensagem}`);
+            console.log(`Dados salvos no servidor:`, formData);
+        })
+        .catch(error => console.error('Erro ao enviar os dados:', error));
     });
-
-    // Carrega os estados ao carregar a página
-    carregarEstados();
 });
