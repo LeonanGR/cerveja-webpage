@@ -21,7 +21,7 @@ def inserir_dados():
             cursor.execute(query, valores)
             conexao.commit()
             print(f"Inserido: Temperatura {temperatura}°C")
-            time.sleep(60)
+            time.sleep(5)
     
     except mysql.connector.Error as err:
         print(f"Erro: {err}")

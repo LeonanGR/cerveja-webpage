@@ -4,18 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário Completo</title>
+    <title>Black Beers - Formulário</title>
     <!-- CSS do Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body class="bg-light">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index.html">Black Beers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/galeria.html">Galeria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/grafico.html">Gráfico</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/formulario.html">Formulário</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-dark text-white">
                     <div class="card-header bg-primary text-white text-center">
-                        <h2>Formulário Completo em HTML</h2>
+                        <h2>Formulário de Avaliação</h2>
                     </div>
                     <div class="card-body">
                         <form id="formulario" method="post">
@@ -99,5 +122,4 @@
     <script src="scripts/estados_municipios_api.js"></script>
 
 </body>
-
 </html>

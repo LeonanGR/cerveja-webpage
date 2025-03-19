@@ -18,15 +18,6 @@ def gerar_grafico():
         cursor = conexao.cursor()
         cursor.execute("SELECT horario, temperatura FROM temp ORDER BY horario DESC LIMIT 100")
         
-        #Exemplos de busca personalizada
-        '''
-        #cursor.execute("SELECT horario, temperatura FROM temp WHERE horario BETWEEN '2025-02-15 20:00:00' AND '2025-02-15 20:10:00'")
-        
-        data_inicio = "2025-02-15 12:00:00"
-        data_fim = "2025-02-15 18:00:00"
-        cursor.execute("SELECT horario, temperatura FROM temp WHERE horario BETWEEN %s AND %s", (data_inicio, data_fim))
-        '''
-        
         dados = cursor.fetchall()
         
         if dados:
@@ -34,6 +25,7 @@ def gerar_grafico():
             df['horario'] = pd.to_datetime(df['horario'])
             df.sort_values(by='horario', inplace=True)
             
+            plt.style.use('dark_background')
             plt.figure(figsize=(10, 5))
             plt.plot(df['horario'], df['temperatura'], marker='o', linestyle='-', color='b')
             plt.xlabel("Horário")
@@ -54,4 +46,4 @@ def gerar_grafico():
 if __name__ == "__main__":
     while True:
         gerar_grafico()
-        time.sleep(60)
+        time.sleep(5)
